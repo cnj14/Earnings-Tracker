@@ -4,14 +4,7 @@ import pytest
 from datetime import datetime
 import pandas
 
-from app.tracker import verify_ticker, verify_web_requests, get_next_date, get_past_dates, get_prices, get_price_df
-
-def test_verify_ticker():
-    '''
-    Function should accept a real stock ticker and recognize a fake one
-    '''
-    assert verify_ticker('K') == 'Valid ticker identified! . . .'
-    assert verify_ticker('ABCDEFG') == 'Ticker not found! Please try again.'
+from app.tracker import verify_web_requests, get_next_date, get_past_dates, get_prices, get_price_df
 
 def test_verify_web_requests():
     '''
@@ -34,16 +27,16 @@ def test_get_next_date():
 
 def test_get_past_dates():
     '''
-    Test that the function output for FB is correct 
+    Test that the function output for Alphabet stock is correct 
     Should return a Pandas DF with a date string in each DataFrame cell
     '''
-    assert type(get_past_dates('FB')) == pandas.core.frame.DataFrame
-    assert type(get_past_dates('FB')['Filing Date'][0]) == str
+    assert type(get_past_dates('GOOG')) == pandas.core.frame.DataFrame
+    assert type(get_past_dates('GOOG')['Filing Date'][0]) == str
     '''
     Should return a date that has already passed
     '''
     today = datetime.now()
-    assert datetime.fromisoformat(get_past_dates('FB')['Filing Date'][0]) < datetime.now()
+    assert datetime.fromisoformat(get_past_dates('GOOG')['Filing Date'][0]) < datetime.now()
     '''
     Should raise an error if company has no Quarterly Reports on file with S.E.C
     '''
