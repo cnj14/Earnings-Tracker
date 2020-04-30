@@ -33,7 +33,7 @@ def verify_ticker(ticker):
     References CSV file of all SEC registered company tickers 
     No effect on output if successful but breaks program if ticker is not found
     '''
-    csv_file_path = os.path.join(os.path.dirname(__file__), 'cik_tickers.csv')
+    csv_file_path = os.path.join(os.path.dirname(__file__), 'cik_ticker.csv')
     found = []
     with open(csv_file_path, 'r') as csv_file:
         reader = csv.DictReader(csv_file)
