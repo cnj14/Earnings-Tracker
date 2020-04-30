@@ -15,15 +15,15 @@ def test_verify_web_requests():
 
 def test_get_next_date():
     '''
-    Test that the function output for Apple's stock is correct 
+    Test that the function output for Boeing's stock is correct 
     Should return a string of a date
     '''
-    assert type(get_next_date('AAPL')) == str
+    assert type(get_next_date('BA')) == str
     '''
     Should return a future date
     '''
     today = datetime.now()
-    assert datetime.fromisoformat(get_next_date('AAPL')) > datetime.now()
+    assert datetime.fromisoformat(get_next_date('BA')) > datetime.now()
 
 def test_get_past_dates():
     '''
